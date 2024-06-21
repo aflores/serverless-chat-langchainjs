@@ -39,18 +39,18 @@ export const defaultOptions: ChatComponentOptions = {
   apiUrl: '',
   enablePromptSuggestions: true,
   promptSuggestions: [
-    'How to search and book rentals?',
-    'What is the refund policy?',
-    'How to contact a representative?',
+    'How can one reprice the segments in a PNR?',
+    'Why is a cancelled PNR still showing up on the Schedule Change?',
+    'How can customers provide detailed information for troubleshooting?',
   ],
   messages: [],
   strings: {
-    promptSuggestionsTitle: 'Ask anything or try an example',
+    promptSuggestionsTitle: 'Ask anything Context Search related or try an example',
     citationsTitle: 'Citations:',
     followUpQuestionsTitle: 'Follow-up questions:',
-    chatInputPlaceholder: 'Ask me anything...',
+    chatInputPlaceholder: 'Ask me about Context Search...',
     chatInputButtonLabel: 'Send question',
-    assistant: 'Support Assistant',
+    assistant: 'AI Assistant could display inaccurate information, double-check the response.',
     user: 'You',
     errorMessage: 'We are currently experiencing an issue.',
     newChatButton: 'New chat',
@@ -183,7 +183,7 @@ export class ChatComponent extends LitElement {
 
   protected renderSuggestions = (suggestions: string[]) => html`
     <section class="suggestions-container">
-      <h2>${this.options.strings.promptSuggestionsTitle}</h2>
+      <h3>${this.options.strings.promptSuggestionsTitle}</h3>
       <div class="suggestions">
         ${map(
           suggestions,
@@ -335,6 +335,12 @@ export class ChatComponent extends LitElement {
 
   static override styles = css`
     :host {
+      h3 {
+        color: rgb(0, 94, 184);
+        font-weight: 500;
+        margin: 0;
+        padding-bottom: 0.5em;
+      }
       /* Base properties */
       --primary: var(--azc-primary, #07f);
       --error: var(--azc-error, #e30);
@@ -344,11 +350,11 @@ export class ChatComponent extends LitElement {
       --bg: var(--azc-bg, #eee);
       --card-bg: var(--azc-card-bg, #fff);
       --card-shadow: var(--azc-card-shadow, 0 0.3px 0.9px rgba(0 0 0 / 12%), 0 1.6px 3.6px rgba(0 0 0 / 16%));
-      --space-md: var(--azc-space-md, 12px);
+      --space-md: var(--azc-space-md, 8px);
       --space-xl: var(--azc-space-xl, calc(var(--space-md) * 2));
       --space-xs: var(--azc-space-xs, calc(var(--space-md) / 2));
       --space-xxs: var(--azc-space-xs, calc(var(--space-md) / 4));
-      --border-radius: var(--azc-border-radius, 16px);
+      --border-radius: var(--azc-border-radius, 6px);
       --focus-outline: var(--azc-focus-outline, 2px solid);
       --overlay-color: var(--azc-overlay-color, rgba(0 0 0 / 40%));
 
